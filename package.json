@@ -1,0 +1,20 @@
+{
+  "name": "filimo_js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tailwind": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch",
+    "server": "npx json-server db.json"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.7",
+    "vite": "^5.4.1"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-beta.2"
+  }
+}
