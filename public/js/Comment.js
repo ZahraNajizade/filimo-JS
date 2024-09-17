@@ -1,3 +1,4 @@
+import createSlider from "./slider";
 let comment = async () => {
   let commentItem = "";
   try {
@@ -5,7 +6,7 @@ let comment = async () => {
     let res = await data.json();
 
     commentItem = res.map((item) => {
-      return `<div class="p-[24px] border-[#33353d] border-solid border-[1px] rounded-[12px] bg-[#ffffff05]">
+      return `<div class="p-[24px] slide comment-slide border-[#33353d] border-solid border-[1px] rounded-[12px] bg-[#ffffff05]">
                       <div class="flex justify-between items-center mb-[16px]">
                         <div class="flex items-center gap-[8px]">
                           <img src="../image/person.png" alt="person" />
@@ -25,8 +26,14 @@ let comment = async () => {
     document
       .querySelector(".comment-slides")
       .insertAdjacentHTML("afterbegin", commentItem.join(""));
+
+    createSlider(".comment-slider", {
+      SpaceBetween: 10,
+      DisableNavigation: true,
+      slidesPerView: 3,
+    });
   } catch (error) {
-    console.log("error");
+    console.log("error1", error);
   }
 };
 

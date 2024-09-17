@@ -6,21 +6,19 @@ let hero = async () => {
     let res = await data.json();
 
     heroImg = res.map((item) => item.src);
-    console.log(heroImg);
     bgDiv.style.backgroundImage = "";
     let heroImgIndex = 0;
 
 
     setInterval(()=>{
         heroImgIndex = (heroImgIndex + 1) % heroImg.length; 
-        console.log(heroImgIndex);
         bgDiv.style.backgroundImage = `url(${heroImg[heroImgIndex]})`;
     }, 5000);
 
 
-    changeHeroImage();
+
   } catch (error) {
-    console.error("error"); 
+    console.log("error3",error); 
   }
 };
 

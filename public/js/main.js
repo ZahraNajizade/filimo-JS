@@ -1,13 +1,19 @@
 import freeMovie from "./freeMovie";
 import comment from "./Comment";
 import hero from "./hero";
-// import slider from "./slider";
+import createSlider from "./slider";
+import accordion from "./accordion";
+
 
 hero
-freeMovie;
+
+
+
+// min width 0
+createSlider(".slider-0", { Pagination: true, DisableNavigation: true });
+
 comment;
-
-
+freeMovie()
 
 
 

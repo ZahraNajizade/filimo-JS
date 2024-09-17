@@ -150,13 +150,22 @@
 
   /* slider */
   .slider {
+    @apply w-full overflow-hidden;
+  }
+  .slider-0 {
     @apply w-full h-screen overflow-hidden;
   }
   .slides {
-    @apply relative w-full h-full;
+    @apply relative w-full h-full flex;
   }
-  .slide {
-    @apply absolute w-full h-full left-0 text-[90px];
+  .slide-0 {
+    @apply w-full h-full text-[90px];
+  }
+  .free-slide{
+    @apply flex flex-col relative w-full
+  }
+  .slide{
+    @apply relative
   }
   .pagination {
     @apply block w-[10px] h-[10px] border-[#ffffff69] border-[2px] border-solid rounded-[50%] mr-[18px];
