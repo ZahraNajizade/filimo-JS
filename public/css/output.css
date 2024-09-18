@@ -801,6 +801,10 @@ html,
   top: 4px;
 }
 
+.left-\[140px\] {
+  left: 140px;
+}
+
 .z-\[1\] {
   z-index: 1;
 }
@@ -824,6 +828,26 @@ html,
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.my-\[\] {
+  margin-top: ;
+  margin-bottom: ;
+}
+
+.my-\[3px\] {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.mx-\[\] {
+  margin-left: ;
+  margin-right: ;
+}
+
+.mx-\[15px\] {
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .mb-\[12px\] {
@@ -946,6 +970,18 @@ html,
   max-height: 130px;
 }
 
+.max-h-\[\] {
+  max-height: ;
+}
+
+.max-h-\[190px\] {
+  max-height: 190px;
+}
+
+.w-1\/2 {
+  width: 50%;
+}
+
 .w-\[160px\] {
   width: 160px;
 }
@@ -1007,8 +1043,12 @@ html,
   width: min-content;
 }
 
-.w-1\/2 {
-  width: 50%;
+.min-w-\[\] {
+  min-width: ;
+}
+
+.min-w-\[50px\] {
+  min-width: 50px;
 }
 
 .max-w-\[135px\] {
@@ -1049,6 +1089,18 @@ html,
 
 .max-w-\[785px\] {
   max-width: 785px;
+}
+
+.max-w-\[\] {
+  max-width: ;
+}
+
+.max-w-\[708px\] {
+  max-width: 708px;
+}
+
+.max-w-\[220px\] {
+  max-width: 220px;
 }
 
 .rotate-180 {
@@ -1114,6 +1166,14 @@ html,
   overflow-y: auto;
 }
 
+.text-ellipsis {
+  text-overflow: ellipsis;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
 .rounded-\[10px\] {
   border-radius: 10px;
 }
@@ -1122,12 +1182,20 @@ html,
   border-radius: 12px;
 }
 
+.rounded-\[16px\] {
+  border-radius: 16px;
+}
+
 .rounded-\[24px\] {
   border-radius: 24px;
 }
 
 .rounded-\[26px\] {
   border-radius: 26px;
+}
+
+.rounded-\[35px\] {
+  border-radius: 35px;
 }
 
 .rounded-\[4px\] {
@@ -1140,14 +1208,6 @@ html,
 
 .rounded-\[8px\] {
   border-radius: 8px;
-}
-
-.rounded-\[16px\] {
-  border-radius: 16px;
-}
-
-.rounded-\[35px\] {
-  border-radius: 35px;
 }
 
 .border {
@@ -1204,12 +1264,21 @@ html,
   background-color: rgba(0,0,0,0.4);
 }
 
+.bg-\[rgba\(255\2c 255\2c 255\2c \.12\)\] {
+  background-color: rgba(255,255,255,.12);
+}
+
 .bg-\[rgba\(28\2c 181\2c 97\2c \.24\)\] {
   background-color: rgba(28,181,97,.24);
 }
 
-.bg-\[rgba\(255\2c 255\2c 255\2c \.12\)\] {
-  background-color: rgba(255,255,255,.12);
+.bg-\[\] {
+  background-color: ;
+}
+
+.bg-\[\#282828\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(40 40 40 / var(--tw-bg-opacity));
 }
 
 .bg-\[linear-gradient\(91deg\2c rgba\(2\2c 192\2c 87\2c 0\.06\)_0\2c rgba\(9\2c 217\2c 102\2c 0\.0198\)_100\%\)\] {
@@ -1253,16 +1322,16 @@ html,
   padding: 16px;
 }
 
+.p-\[1px\] {
+  padding: 1px;
+}
+
 .p-\[24px\] {
   padding: 24px;
 }
 
 .p-\[3px\] {
   padding: 3px;
-}
-
-.p-\[1px\] {
-  padding: 1px;
 }
 
 .px-\[10px\] {
@@ -1323,6 +1392,16 @@ html,
 .py-\[80px\] {
   padding-top: 80px;
   padding-bottom: 80px;
+}
+
+.px-\[15px\] {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.py-\[3px\] {
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .pb-\[10px\] {
@@ -1391,6 +1470,10 @@ html,
 
 .text-center {
   text-align: center;
+}
+
+.font-\[\] {
+  font-family: ;
 }
 
 .text-\[1\.1rem\] {
@@ -1517,6 +1600,30 @@ html,
   line-height: 40px;
 }
 
+.leading-\[\] {
+  line-height: ;
+}
+
+.leading-\[12px\] {
+  line-height: 12px;
+}
+
+.leading-3 {
+  line-height: .75rem;
+}
+
+.leading-\[26p\] {
+  line-height: 26p;
+}
+
+.leading-\[26\] {
+  line-height: 26;
+}
+
+.leading-\[26px\] {
+  line-height: 26px;
+}
+
 .text-\[\#151515\] {
   --tw-text-opacity: 1;
   color: rgb(21 21 21 / var(--tw-text-opacity));
@@ -1575,6 +1682,10 @@ html,
   color: transparent;
 }
 
+.text-\[\] {
+  color: ;
+}
+
 .opacity-20 {
   opacity: 0.2;
 }
@@ -1620,6 +1731,10 @@ html,
     margin-bottom: 0px;
   }
 
+  .t1\:mb-\[0\] {
+    margin-bottom: 0;
+  }
+
   .t1\:mb-\[24px\] {
     margin-bottom: 24px;
   }
@@ -1628,16 +1743,12 @@ html,
     margin-bottom: 32px;
   }
 
-  .t1\:ml-\[32px\] {
-    margin-left: 32px;
-  }
-
-  .t1\:mb-\[0\] {
-    margin-bottom: 0;
-  }
-
   .t1\:ml-\[16px\] {
     margin-left: 16px;
+  }
+
+  .t1\:ml-\[32px\] {
+    margin-left: 32px;
   }
 
   .t1\:block {
@@ -1648,16 +1759,16 @@ html,
     display: none;
   }
 
+  .t1\:w-\[120px\] {
+    width: 120px;
+  }
+
   .t1\:w-\[47\%\] {
     width: 47%;
   }
 
   .t1\:w-\[85\%\] {
     width: 85%;
-  }
-
-  .t1\:w-\[120px\] {
-    width: 120px;
   }
 
   .t1\:max-w-\[47\%\] {
