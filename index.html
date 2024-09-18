@@ -112,6 +112,61 @@
 
     <!-- min width 768px -->
     <div class="hidden t1:block">
+      <!-- header -->
+      <header>
+        <div class="bg-[rgba(0,0,0,0.8)] backdrop-blur-[14px] fixed top-0 left-0 right-0 z-[30]">
+          <div class="container justify-between items-center flex flex-wrap d2:flex-nowrap mt-[8px] d2:mt-[0]">
+            
+              <div class="pl-[32px] ml-[32px]  d2:border-l-[1px] d2:border-l-[rgba(255,255,255,0.3)] d2:h-fit">
+                <img src="./public/image/fa-filimo-dark-logo.svg" alt="" class="min-w-[80px]">
+              </div>
+              <ul class="menu-items flex items-center order-3 w-full d2:order-none"></ul>
+
+            
+            <div class="flex items-center gap-[16px]">
+              <a href="#"
+                class="py-[10px] px-[16px] bg-[#1cb561] flex items-center gap-[4px] rounded-[4px] text-nowrap ">
+                <div>
+                  <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    data-gtm-vis-has-fired2323515_2471="1" width="18" height="18">
+                    <defs>
+                      <g id="ui-icon-subscription" viewBox="0 0 24 24">
+                        <path
+                          d="M19 4H5A3 3 0 0 0 2 7V17a3 3 0 0 0 3 3H19a3 3 0 0 0 3-3V7A3 3 0 0 0 19 4Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7A1 1 0 0 1 5 6H19a1 1 0 0 1 1 1Z">
+                        </path>
+                        <path
+                          d="M12.4 11 9 8.74A1.25 1.25 0 0 0 7 9.79v4.42A1.26 1.26 0 0 0 9 15.27l3.44-2.21A1.26 1.26 0 0 0 12.4 11Z">
+                        </path>
+                        <circle cx="16" cy="9" r="1"></circle>
+                        <circle cx="16" cy="15" r="1"></circle>
+                        <circle cx="16" cy="12" r="1"></circle>
+                      </g>
+                    </defs>
+                    <g fill="#FFFFFF">
+                      <path
+                        d="M19 4H5A3 3 0 0 0 2 7V17a3 3 0 0 0 3 3H19a3 3 0 0 0 3-3V7A3 3 0 0 0 19 4Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7A1 1 0 0 1 5 6H19a1 1 0 0 1 1 1Z">
+                      </path>
+                      <path
+                        d="M12.4 11 9 8.74A1.25 1.25 0 0 0 7 9.79v4.42A1.26 1.26 0 0 0 9 15.27l3.44-2.21A1.26 1.26 0 0 0 12.4 11Z">
+                      </path>
+                      <circle cx="16" cy="9" r="1"></circle>
+                      <circle cx="16" cy="15" r="1"></circle>
+                      <circle cx="16" cy="12" r="1"></circle>
+                    </g>
+                  </svg>
+                </div>
+                <span class="text-[1.1rem] font-[500]">
+                  خرید اشتراک </span>
+              </a>
+              <a href="#"
+                class=" py-[10px] px-[16px] bg-[rgba(255,255,255,0.2)] flex items-center gap-[4px] rounded-[4px]">
+                <span class="text-[1.1rem] font-[500]">ورود</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
       <!-- hero -->
 
       <div class="relative w-full">
@@ -119,7 +174,7 @@
         <div class="bg-[url(/public/image/hero_img_1.jpeg)] bg-div bg-cover bg-no-repeat bg-center absolute inset-0">
         </div>
         <div class="bg-[radial-gradient(130%_44%_at_41%_40%,rgba(0,0,0,0)_0,#151515_100%)] absolute inset-0"></div>
-        <div class="px-[20px] flex flex-col items-center max-w-[1440px] absolute bottom-[64px] left-0 right-0">
+        <div class="px-[20px] flex flex-col items-center max-w-[1440px] mx-auto absolute bottom-[64px] left-0 right-0">
           <div
             class="mb-[16px] text-transparent bg-clip-text text-center bg-[linear-gradient(93.9deg,#fdc13b_4.15%,#f89f3e_65.65%,#f4843f_97.12%)] text-[14px] font-[700] leading-[20px]">
             با فیلیمو بی‌وقفه فیلم ببین
@@ -259,19 +314,19 @@
             </span>
             <div
               class="p-[1px] border-[1px] border-[#ffffff1f] rounded-[35px] w-auto t1:w-[120px] flex justify-between">
-              <a onClick={seriesButton} href="#"
-                class="px-[8px] w-1/2 font-[500] leading-[24px] text-[12px] text-center">
+              <a id="series-button"
+                class="px-[8px] w-1/2 font-[500] leading-[24px] text-[12px] text-center cursor-pointer">
                 سریال
               </a>
-              <a onClick={movieButton} href="#"
-                class="px-[8px] w-1/2 font-[500] leading-[24px] text-[12px] text-center rounded-[16px] bg-[rgba(255,255,255,.12)]">
+              <a id="movie-button"
+                class="px-[8px] w-1/2 font-[500] leading-[24px] text-[12px] text-center rounded-[16px] bg-[rgba(255,255,255,.12)]  cursor-pointer">
                 فیلم
               </a>
             </div>
           </div>
 
           <div class="">
-            <ul class="">
+            <ul class="bestof-items">
               <!-- {bestOfItem?.map((item, index) => {
                 return (
                   <a href="" class="" key={index}>
@@ -289,7 +344,7 @@
         <!-- 2 -->
         <div class="">
           <div class="">
-            <div class="container mb-[16px]">
+            <div class="container mb-[16px] bestof-detail relative">
               <div class="flex flex-col">
                 <a href="#" class="mb-[12px] text-[16px] font-[700] leading-[32px]">زخم کاری: انتقام</a>
                 <div class="mb-[24px]"></div>
@@ -303,7 +358,8 @@
                   مالک آخرین برگ بازیش را رو می کند. او فاتحانه نشسته بر سریر خون، پا در مسیری می گذارد که هنوز بوی خون
                   از آن به مشام می رسد.</div>
               </div>
-              <div class="absolute left-[140px] top-0"><img src="" alt="" class="block max-h-[190px] w-full  max-w-[220px]">
+              <div class="absolute left-[140px] top-0"><img src="" alt=""
+                  class="block max-h-[190px] w-full  max-w-[220px]">
               </div>
             </div>
             <div class="">
@@ -892,6 +948,352 @@
           </a>
         </div>
       </div>
+
+      <!-- footer -->
+       <footer class="">
+        <div class="flex justify-between bg-[#191919] bottom-0 left-0 right-0 fixed z-[30]"><ul class="flex items-center">
+            <li class="flex items-center">
+              <a href="#" class="inline-block py-[4px] pr-[8px]">
+                <span>
+                  <svg
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                  >
+                    <defs>
+                      <g id="ui-icon-arrow_up" viewBox="0 0 24 24">
+                        <path d="M19.17 10 12.55 4s-.1-.06-.15-.1l-.15-.09a1.07 1.07 0 0 0-.31-.06h-.06a1 1 0 0 0-.37.08.83.83 0 0 0-.16.09s-.11.06-.15.1l0 0h0L4.82 10a1 1 0 1 0 1.36 1.46l4.7-4.42V19.25a1 1 0 0 0 2 0V7l4.95 4.48a1 1 0 0 0 .67.26A1 1 0 0 0 19.17 10Z"></path>
+                      </g>
+                    </defs>
+                    <g fill="#959595">
+                      <path d="M19.17 10 12.55 4s-.1-.06-.15-.1l-.15-.09a1.07 1.07 0 0 0-.31-.06h-.06a1 1 0 0 0-.37.08.83.83 0 0 0-.16.09s-.11.06-.15.1l0 0h0L4.82 10a1 1 0 1 0 1.36 1.46l4.7-4.42V19.25a1 1 0 0 0 2 0V7l4.95 4.48a1 1 0 0 0 .67.26A1 1 0 0 0 19.17 10Z"></path>
+                    </g>
+                  </svg>
+                </span>
+              </a>
+            </li>
+            <li class="flex items-center">
+              <a href="# " class="footerText">
+                <span class="ml-[4px]">
+                  <svg
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                  >
+                    <defs>
+                      <g id="ui-icon-tv" viewBox="0 0 24 24">
+                        <g>
+                          <path d="M15 20.5H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2Z"></path>
+                          <path d="M19.5 3.5H4.5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V6.5A3 3 0 0 0 19.5 3.5Zm1 13a1 1 0 0 1-1 1H4.5a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1Z"></path>
+                        </g>
+                      </g>
+                    </defs>
+                    <g fill="#959595">
+                      <g>
+                        <path d="M15 20.5H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2Z"></path>
+                        <path d="M19.5 3.5H4.5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V6.5A3 3 0 0 0 19.5 3.5Zm1 13a1 1 0 0 1-1 1H4.5a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1Z"></path>
+                      </g>
+                    </g>
+                  </svg>
+                </span>
+                تماشا‌ با تلویزیون
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="footerText">
+                اپلیکیشن‌ها
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="footerText">
+                تماس و پشتیبانی
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="footerText">
+                فروشگاه
+              </a>
+            </li>
+
+            <li class="">
+              <a href="#" class="footerText">
+                <span>
+                  <svg
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                  >
+                    <defs>
+                      <g id="ui-icon-arrow_drop_down" viewBox="0 0 24 24">
+                        <path d="M12 17a1 1 0 0 1-.77-.36l-5-6A1 1 0 0 1 7 9H17a1 1 0 0 1 .77 1.64l-5 6A1 1 0 0 1 12 17Z"></path>
+                      </g>
+                    </defs>
+                    <g fill="#959595">
+                      <path d="M12 17a1 1 0 0 1-.77-.36l-5-6A1 1 0 0 1 7 9H17a1 1 0 0 1 .77 1.64l-5 6A1 1 0 0 1 12 17Z"></path>
+                    </g>
+                  </svg>
+                </span>
+                سایر لینک‌ها
+              </a>
+              <div class="absolute min-w-[150px] bottom-[28px] bg-[#191919] hidden">
+                <ul>
+                  <li>
+                    <a href="#" class="footerText">
+                      قوانین
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footerText">
+                      به ما بپیوندید
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footerText">
+                      تبلیغات در فیلیمو
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footerText">
+                      لوگو
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footerText">
+                      دانلود فیلم و سریال
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="">
+              <a href="#" class="footerText">
+                <span>
+                  <svg
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                  >
+                    <defs>
+                      <g id="ui-icon-arrow_drop_down" viewBox="0 0 24 24">
+                        <path d="M12 17a1 1 0 0 1-.77-.36l-5-6A1 1 0 0 1 7 9H17a1 1 0 0 1 .77 1.64l-5 6A1 1 0 0 1 12 17Z"></path>
+                      </g>
+                    </defs>
+                    <g fill="#959595">
+                      <path d="M12 17a1 1 0 0 1-.77-.36l-5-6A1 1 0 0 1 7 9H17a1 1 0 0 1 .77 1.64l-5 6A1 1 0 0 1 12 17Z"></path>
+                    </g>
+                  </svg>
+                </span>
+                لینک‌های مفید
+              </a>
+              <div class="absolute min-w-[150px] bottom-[28px] bg-[#191919] hidden">
+                <ul>
+                  <li>
+                    <a href="#" class="footerText">
+                      تماس و پشتیبانی
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footerText">
+                      فروشگاه
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footerText">
+                      قوانین
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footerText">
+                      به ما بپیوندید
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footerText">
+                      تبلیغات در فیلیمو
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footerText">
+                      لوگو
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footerText">
+                      دانلود فیلم و سریال
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+          <ul>
+            <li class="relative flex ">
+              <a href="#" class="footerText">
+                <span>
+                  <svg
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                  >
+                    <defs>
+                      <g id="ui-icon-arrow_drop_down" viewBox="0 0 24 24">
+                        <path d="M12 17a1 1 0 0 1-.77-.36l-5-6A1 1 0 0 1 7 9H17a1 1 0 0 1 .77 1.64l-5 6A1 1 0 0 1 12 17Z"></path>
+                      </g>
+                    </defs>
+                    <g fill="#959595">
+                      <path d="M12 17a1 1 0 0 1-.77-.36l-5-6A1 1 0 0 1 7 9H17a1 1 0 0 1 .77 1.64l-5 6A1 1 0 0 1 12 17Z"></path>
+                    </g>
+                  </svg>
+                </span>
+                شبکه‌های اجتماعی
+              </a>
+              <a href="#" class="py-[4px] pl-[8px]">
+                <span>
+                  <svg
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                  >
+                    <defs>
+                      <g id="ui-icon-more_vertical" viewBox="0 0 24 24">
+                        <circle cx="12" cy="5" r="2"></circle>
+                        <circle cx="12" cy="12" r="2"></circle>
+                        <circle cx="12" cy="19" r="2"></circle>
+                      </g>
+                    </defs>
+                    <g fill="#959595">
+                      <circle cx="12" cy="5" r="2"></circle>
+                      <circle cx="12" cy="12" r="2"></circle>
+                      <circle cx="12" cy="19" r="2"></circle>
+                    </g>
+                  </svg>
+                </span>
+              </a>
+              <div class="absolute min-w-[150px] bottom-[28px] bg-[#191919] hidden">
+                <ul>
+                  <li>
+                    <a href="#" class="footerText">
+                      <span>
+                        <svg
+                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          height="24"
+                        >
+                          <defs>
+                            <g id="ui-icon-redvod" viewBox="0 0 24 24">
+                              <path d="M10.56 2.12 8.63 1.61a3.25 3.25 0 0 0-4 2.31L4.17 5.74A10 10 0 0 1 10.56 2.12Z"></path>
+                              <path d="M2.08 13.59l-.47 1.78a3.25 3.25 0 0 0 2.31 4l1.85.49A10 10 0 0 1 2.08 13.59Z"></path>
+                              <path d="M20.08 4.65 18 4.1a9.94 9.94 0 0 1 3.81 6.67l.57-2.14A3.25 3.25 0 0 0 20.08 4.65Z"></path>
+                              <path d="M13.39 21.86l2 .53a3.25 3.25 0 0 0 4-2.31l.56-2.1A10 10 0 0 1 13.39 21.86Z"></path>
+                              <path d="M12 2.9A9.1 9.1 0 1 0 21.1 12 9.09 9.09 0 0 0 12 2.9ZM6.84 7.44a2.6 2.6 0 1 1 2.07 3A2.6 2.6 0 0 1 6.84 7.44Zm3.79 7.86a2.6 2.6 0 1 1-2.06-3A2.6 2.6 0 0 1 10.63 15.3Zm.19-3.45a1.16 1.16 0 1 1 .91 1.35A1.15 1.15 0 0 1 10.82 11.85Zm6.34 4.71a2.6 2.6 0 1 1-2.07-3A2.6 2.6 0 0 1 17.16 16.56Zm1.32-6.88a2.6 2.6 0 1 1-2.06-3A2.6 2.6 0 0 1 18.48 9.68Z"></path>
+                            </g>
+                          </defs>
+                          <g fill="#959595">
+                            <path d="M10.56 2.12 8.63 1.61a3.25 3.25 0 0 0-4 2.31L4.17 5.74A10 10 0 0 1 10.56 2.12Z"></path>
+                            <path d="M2.08 13.59l-.47 1.78a3.25 3.25 0 0 0 2.31 4l1.85.49A10 10 0 0 1 2.08 13.59Z"></path>
+                            <path d="M20.08 4.65 18 4.1a9.94 9.94 0 0 1 3.81 6.67l.57-2.14A3.25 3.25 0 0 0 20.08 4.65Z"></path>
+                            <path d="M13.39 21.86l2 .53a3.25 3.25 0 0 0 4-2.31l.56-2.1A10 10 0 0 1 13.39 21.86Z"></path>
+                            <path d="M12 2.9A9.1 9.1 0 1 0 21.1 12 9.09 9.09 0 0 0 12 2.9ZM6.84 7.44a2.6 2.6 0 1 1 2.07 3A2.6 2.6 0 0 1 6.84 7.44Zm3.79 7.86a2.6 2.6 0 1 1-2.06-3A2.6 2.6 0 0 1 10.63 15.3Zm.19-3.45a1.16 1.16 0 1 1 .91 1.35A1.15 1.15 0 0 1 10.82 11.85Zm6.34 4.71a2.6 2.6 0 1 1-2.07-3A2.6 2.6 0 0 1 17.16 16.56Zm1.32-6.88a2.6 2.6 0 1 1-2.06-3A2.6 2.6 0 0 1 18.48 9.68Z"></path>
+                          </g>
+                        </svg>
+                      </span>
+                      <span>آپارات</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footerText">
+                      <span>
+                        <svg
+                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          height="24"
+                        >
+                          <defs>
+                            <g id="ui-icon-telegram" viewBox="0 0 24 24">
+                              <path d="M2.48 11 21.1 3.78C22 3.47 22.72 4 22.44 5.3h0L19.27 20.24c-.23 1.06-.86 1.32-1.74.82L12.7 17.5l-2.33 2.24a1.23 1.23 0 0 1-1 .48l.35-4.92 9-8.08c.39-.34-.09-.54-.6-.2L7 14 2.26 12.5c-1-.33-1.06-1 .22-1.53Z"></path>
+                            </g>
+                          </defs>
+                          <g fill="#959595">
+                            <path d="M2.48 11 21.1 3.78C22 3.47 22.72 4 22.44 5.3h0L19.27 20.24c-.23 1.06-.86 1.32-1.74.82L12.7 17.5l-2.33 2.24a1.23 1.23 0 0 1-1 .48l.35-4.92 9-8.08c.39-.34-.09-.54-.6-.2L7 14 2.26 12.5c-1-.33-1.06-1 .22-1.53Z"></path>
+                          </g>
+                        </svg>
+                      </span>
+                      <span>تلگرام</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footerText">
+                      <span>
+                        <svg
+                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          height="24"
+                        >
+                          <defs>
+                            <g id="ui-icon-twitter" viewBox="0 0 24 24">
+                              <path d="M22.63 5.33a8.51 8.51 0 0 1-2.47.7 4.4 4.4 0 0 0 1.9-2.45 8.53 8.53 0 0 1-2.74 1.08 4.21 4.21 0 0 0-6.07-.2 4.45 4.45 0 0 0-1.36 3.21 4.88 4.88 0 0 0 .11 1A12.1 12.1 0 0 1 3.13 4.09 4.49 4.49 0 0 0 4.45 10 4.21 4.21 0 0 1 2.5 9.42v.05A4.4 4.4 0 0 0 6 13.8 4.24 4.24 0 0 1 4 13.87a4.33 4.33 0 0 0 4 3.07 8.52 8.52 0 0 1-5.33 1.88 8.91 8.91 0 0 1-1-.07 12 12 0 0 0 6.61 2c7.91 0 12.22-6.7 12.23-12.52l.4-.92A8.81 8.81 0 0 0 22.63 5.33Z"></path>
+                            </g>
+                          </defs>
+                          <g fill="#959595">
+                            <path d="M22.63 5.33a8.51 8.51 0 0 1-2.47.7 4.4 4.4 0 0 0 1.9-2.45 8.53 8.53 0 0 1-2.74 1.08 4.21 4.21 0 0 0-6.07-.2 4.45 4.45 0 0 0-1.36 3.21 4.88 4.88 0 0 0 .11 1A12.1 12.1 0 0 1 3.13 4.09 4.49 4.49 0 0 0 4.45 10 4.21 4.21 0 0 1 2.5 9.42v.05A4.4 4.4 0 0 0 6 13.8 4.24 4.24 0 0 1 4 13.87a4.33 4.33 0 0 0 4 3.07 8.52 8.52 0 0 1-5.33 1.88 8.91 8.91 0 0 1-1-.07 12 12 0 0 0 6.61 2c7.91 0 12.22-6.7 12.23-12.52l.4-.92A8.81 8.81 0 0 0 22.63 5.33Z"></path>
+                          </g>
+                        </svg>
+                      </span>
+                      <span>توئیتر</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footerText">
+                      <span>
+                        <svg
+                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          height="24"
+                        >
+                          <defs>
+                            <g id="ui-icon-instagram" viewBox="0 0 24 24">
+                              <path d="M22.44 7.68A7.69 7.69 0 0 0 22 5.13a5.32 5.32 0 0 0-3.08-3.08 7.59 7.59 0 0 0-2.54-.49C15.22 1.51 14.86 1.5 12 1.5l0 0c-2.84 0-3.2 0-4.31.06a7.87 7.87 0 0 0-2.54.51A5.32 5.32 0 0 0 2.05 5.17a7.69 7.69 0 0 0-.49 2.55C1.51 8.84 1.5 9.19 1.5 12s0 3.2.06 4.32a8 8 0 0 0 .53 2.51A5.32 5.32 0 0 0 5.17 22a7.84 7.84 0 0 0 2.54.49c1.11 0 1.47.06 4.31.06s3.2 0 4.31-.06A7.84 7.84 0 0 0 18.87 22 5.32 5.32 0 0 0 22 18.87a7.69 7.69 0 0 0 .49-2.55c0-1.12.06-1.48.06-4.32S22.5 8.8 22.44 7.68ZM20.5 16.24a5.9 5.9 0 0 1-.36 2 3.49 3.49 0 0 1-2 2 5.38 5.38 0 0 1-1.94.36c-1.1.06-1.43.07-4.23.07s-3.13 0-4.23-.07a5.38 5.38 0 0 1-1.94-.36 3.49 3.49 0 0 1-2-2 5.6 5.6 0 0 1-.36-1.94c-.08-1.11-.08-1.44-.08-4.24s0-3.13.06-4.24a5.63 5.63 0 0 1 .38-1.94 3.48 3.48 0 0 1 2-2 5.85 5.85 0 0 1 1.94-.36c1.1-.08 1.44-.08 4.23-.08s3.13 0 4.23.06a5.85 5.85 0 0 1 1.94.36 3.54 3.54 0 0 1 2 2 5.86 5.86 0 0 1 .36 1.95c.05 1.1.06 1.44.06 4.23S20.56 15.14 20.5 16.24Z"></path>
+                              <path d="M12 6.64A5.36 5.36 0 1 0 17.34 12 5.35 5.35 0 0 0 12 6.64Zm0 8.83A3.48 3.48 0 1 1 15.46 12 3.47 3.47 0 0 1 12 15.47Z"></path>
+                              <path d="M17.46 4.86a1.26 1.26 0 1 0 1.26 1.26A1.25 1.25 0 0 0 17.46 4.86Z"></path>
+                            </g>
+                          </defs>
+                          <g fill="#959595">
+                            <path d="M22.44 7.68A7.69 7.69 0 0 0 22 5.13a5.32 5.32 0 0 0-3.08-3.08 7.59 7.59 0 0 0-2.54-.49C15.22 1.51 14.86 1.5 12 1.5l0 0c-2.84 0-3.2 0-4.31.06a7.87 7.87 0 0 0-2.54.51A5.32 5.32 0 0 0 2.05 5.17a7.69 7.69 0 0 0-.49 2.55C1.51 8.84 1.5 9.19 1.5 12s0 3.2.06 4.32a8 8 0 0 0 .53 2.51A5.32 5.32 0 0 0 5.17 22a7.84 7.84 0 0 0 2.54.49c1.11 0 1.47.06 4.31.06s3.2 0 4.31-.06A7.84 7.84 0 0 0 18.87 22 5.32 5.32 0 0 0 22 18.87a7.69 7.69 0 0 0 .49-2.55c0-1.12.06-1.48.06-4.32S22.5 8.8 22.44 7.68ZM20.5 16.24a5.9 5.9 0 0 1-.36 2 3.49 3.49 0 0 1-2 2 5.38 5.38 0 0 1-1.94.36c-1.1.06-1.43.07-4.23.07s-3.13 0-4.23-.07a5.38 5.38 0 0 1-1.94-.36 3.49 3.49 0 0 1-2-2 5.6 5.6 0 0 1-.36-1.94c-.08-1.11-.08-1.44-.08-4.24s0-3.13.06-4.24a5.63 5.63 0 0 1 .38-1.94 3.48 3.48 0 0 1 2-2 5.85 5.85 0 0 1 1.94-.36c1.1-.08 1.44-.08 4.23-.08s3.13 0 4.23.06a5.85 5.85 0 0 1 1.94.36 3.54 3.54 0 0 1 2 2 5.86 5.86 0 0 1 .36 1.95c.05 1.1.06 1.44.06 4.23S20.56 15.14 20.5 16.24Z"></path>
+                            <path d="M12 6.64A5.36 5.36 0 1 0 17.34 12 5.35 5.35 0 0 0 12 6.64Zm0 8.83A3.48 3.48 0 1 1 15.46 12 3.47 3.47 0 0 1 12 15.47Z"></path>
+                            <path d="M17.46 4.86a1.26 1.26 0 1 0 1.26 1.26A1.25 1.25 0 0 0 17.46 4.86Z"></path>
+                          </g>
+                        </svg>
+                      </span>
+                      <span>اینستاگرام</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+          
+        </footer>
     </div>
   </main>
   <script type="module" src="./public/js/main.js"></script>

@@ -2,10 +2,10 @@ import createSlider from "./slider";
 let freeMovie = async () => {
   let freeMovieItem = "";
   try {
-    let data = await fetch("http://localhost:3000/freeMovie");
+    let data = await fetch("../../db.json");
     let res = await data.json();
 
-    freeMovieItem = res.map((item) => {
+    freeMovieItem = res.freeMovie.map((item) => {
       return `<div class="slide free-slide">
       <div class="flex items-center gap-[4px] px-[8px] py-[4px] bg-[#1d2b1f] absolute top-[4px] right-[8px] z-[2] text-[#4dab56] rounded-[24px]">
       <span class="block ">

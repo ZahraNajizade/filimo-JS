@@ -2,10 +2,10 @@ let hero = async () => {
   let bgDiv = document.querySelector(".bg-div");
   let heroImg = [];
   try {
-    let data = await fetch("http://localhost:3000/heroImage");
+    let data = await fetch("../../db.json");
     let res = await data.json();
 
-    heroImg = res.map((item) => item.src);
+    heroImg = res.heroImage.map((item) => item.src);
     bgDiv.style.backgroundImage = "";
     let heroImgIndex = 0;
 

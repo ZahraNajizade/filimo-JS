@@ -2,10 +2,10 @@ import createSlider from "./slider";
 let comment = async () => {
   let commentItem = "";
   try {
-    let data = await fetch("http://localhost:3000/Comments");
+    let data = await fetch("../../db.json");
     let res = await data.json();
 
-    commentItem = res.map((item) => {
+    commentItem = res.Comments.map((item) => {
       return `<div class="p-[24px] slide comment-slide border-[#33353d] border-solid border-[1px] rounded-[12px] bg-[#ffffff05]">
                       <div class="flex justify-between items-center mb-[16px]">
                         <div class="flex items-center gap-[8px]">

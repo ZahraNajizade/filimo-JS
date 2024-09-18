@@ -3,6 +3,10 @@ import comment from "./Comment";
 import hero from "./hero";
 import createSlider from "./slider";
 import accordion from "./accordion";
+import menu from "./menu";
+import bestof from "./bestof";
+
+
 
 
 hero
@@ -14,9 +18,9 @@ createSlider(".slider-0", { Pagination: true, DisableNavigation: true });
 
 comment;
 freeMovie()
+menu()
 
-
-
+bestof()
 
 
 
