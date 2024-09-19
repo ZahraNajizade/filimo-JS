@@ -89,7 +89,7 @@ function createSlider(
     autoplay = false,
     transitionSpeed = 600,
     slidesPerView = 1,
-    loop = true,
+    loop = false,
     responsive = {
       768: { slidesPerView: 2 },
       1024: { slidesPerView: 3 },
@@ -109,34 +109,33 @@ function createSlider(
   let counter = 0;
 
   slide.forEach((item, index) => {
-    // item.style.transform = `translatex(calc(${
-    //   index * 100
-    // }% + ${SpaceBetween*(index)}px))`;
+ 
     item.style.marginLeft = `${SpaceBetween}px`;
-    item.style.width = `calc(${
-      (item.parentElement.parentElement.clientWidth /
-        slidesPerView /
-        item.parentElement.parentElement.clientWidth) *
-      100
-    }%)`;
+    item.style.width = `calc( (100% / ${slidesPerView}) - ${SpaceBetween}px)`;
 
+        // item.style.marginLeft = `${SpaceBetween}px`;
+        // item.style.width = `calc(${
+        //   (item.parentElement.parentElement.clientWidth /
+        //     slidesPerView /
+        //     item.parentElement.parentElement.clientWidth) *
+        //   100
+        // }%)`;
 
-    // `calc(${(item.parentElement.clientWidth / slidesPerView)}px - ${SpaceBetween}px)`
   });
 
-  //  slide[0].parentElement.style.width = `calc(3375px)`;
+
+ if (slide.length >= slidesPerView) {
+   slide[0].parentElement.style.width = `calc(100% /
+    ${slidesPerView} * ${slide.length})`;
+ } else {
+   slide[0].parentElement.style.width = `100%`;
+ }
+
+  
 
 
-  slide[0].parentElement.style.width = `calc(${
-    (slide[0].parentElement.parentElement.clientWidth /
-      slidesPerView /
-      slide[0].parentElement.parentElement.clientWidth) *
-    100
-  }% * ${slide.length})`;
 
 
-
-  console.log(slide[0].clientWidth);
   
   
 
@@ -153,9 +152,12 @@ function createSlider(
     //   }px))`;
     // });
 
-    slide[0].parentElement.style.transform = `translatex(${
-      (slide[0].clientWidth + SpaceBetween) * counter
-    }px)`;
+
+      slide[0].parentElement.style.transform = `translateX(calc(100% /
+    ${slide.length} * ${counter})`;
+
+
+    
 
 
     // pagination
@@ -176,7 +178,7 @@ function createSlider(
       } else {
         prev.style.opacity = 1;
       }
-      if (counter == slide.length - 1) {
+      if (counter == slide.length - 1 - (slidesPerView - 1)) {
         next.style.opacity = 0.2;
       } else {
         next.style.opacity = 1;
@@ -202,13 +204,19 @@ function createSlider(
     }
   }
 
+  // loop
+
+
+
   // navigation
   next.addEventListener("click", () => {
-    if (counter != slide.length - 1) {
+    if (counter != slide.length - 1 - (slidesPerView - 1)) {
       prev.style.opacity = 1;
       counter++;
       counterSlider(counter);
     }
+   
+    
   });
   prev.addEventListener("click", () => {
     if (counter != 0) {

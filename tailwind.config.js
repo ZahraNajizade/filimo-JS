@@ -9,6 +9,8 @@ export default {
       // tablet
       t1: "768px",
       t2: "1024px",
+      // mobile 
+      m1: "320px"
     },
   },
   plugins: [],

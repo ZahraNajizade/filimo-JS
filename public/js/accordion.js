@@ -77,23 +77,27 @@
 // accordion
 
 
-  let accordion = document.querySelectorAll(".accordion")
-accordion.forEach((item,index) => {
+
+let accordion = document.querySelectorAll(".accordion");
+let rotatePlus = document.querySelectorAll(".rotate-plus");
+let answer = document.querySelectorAll(".answer");
+
+accordion.forEach((item, index) => {
   item.addEventListener("click", () => {
-    const answer = document.querySelectorAll(".answer");
-    
     // باز و بسته کردن محتوای کلیک شده
     if (answer[index].style.display === "block") {
+      rotatePlus[index].style.transform = "rotate(45deg)";
+      rotatePlus[index].style.transition = "transform 0.3s ease-out";
       answer[index].style.display = "none";
       item.style.color = "#fff";
     } else {
+      rotatePlus[index].style.transform = "rotate(0deg)";  
+      rotatePlus[index].style.transition = "transform 0.3s ease-out";
       answer[index].style.display = "block";
-
       item.style.color = "#f4843f";
     }
   });
 });
-
 
 
 export default accordion

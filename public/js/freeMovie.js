@@ -1,6 +1,7 @@
 import createSlider from "./slider";
 let freeMovie = async () => {
   let freeMovieItem = "";
+  let freeMovieItem0 = "";
   try {
     let data = await fetch("../../db.json");
     let res = await data.json();
@@ -24,14 +25,28 @@ let freeMovie = async () => {
       .querySelector(".free-slides")
       .insertAdjacentHTML("afterbegin", freeMovieItem.join(""));
 
+
       createSlider(".free-slider", {
         SpaceBetween: 30,
         DisableNavigation: true,
         slidesPerView:6
       });
+
+
+      // 0
+
+      freeMovieItem0 = res.freeMovie.map((item) => {
+        return `<a href="#" class="mb-[8px]"><img src="${item.src}" alt="" class="rounded-[4px] w-[90px] m1:w-[105px]"></a>`;
+      });
+
+      document
+        .querySelector(".free-movie-0")
+        .insertAdjacentHTML("afterbegin", freeMovieItem0.join(""));
   } catch (error) {
     console.log("error2", error);
   }
 };
+
+
 
 export default freeMovie;

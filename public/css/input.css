@@ -18,6 +18,11 @@
 }
 
 @layer components {
+  .bestof-bg{
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   /* question */
   .activeQuestion {
     @apply;
@@ -159,7 +164,7 @@
     @apply relative w-full h-full flex;
   }
   .slide-0 {
-    @apply w-full h-full text-[90px];
+    @apply w-full h-full overflow-hidden;
   }
   .free-slide{
     @apply flex flex-col relative w-full
@@ -170,4 +175,21 @@
   .pagination {
     @apply block w-[10px] h-[10px] border-[#ffffff69] border-[2px] border-solid rounded-[50%] mr-[18px];
   }
+
+
+  /* hover */
+  /* .menu-hover:hover svg{
+    fill: #f9ad03 !important;
+    color: #f9ad03 !important;
+  } */
+  .menu-hover:hover>a{
+    color: #f9ad03 !important;
+  } 
+  .menu-hover:hover .submenu-hover{
+    @apply block
+  }
+  .footer-hover:hover .submenu-hover{
+    @apply block
+  }
+  
 }

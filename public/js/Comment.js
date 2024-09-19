@@ -29,8 +29,8 @@ let comment = async () => {
 
     createSlider(".comment-slider", {
       SpaceBetween: 10,
-      DisableNavigation: true,
       slidesPerView: 3,
+      DisableNavigation: true,
     });
   } catch (error) {
     console.log("error1", error);
