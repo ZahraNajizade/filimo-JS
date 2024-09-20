@@ -4,16 +4,17 @@ function createSlider(
   {
     Pagination = false,
     DisableNavigation = false,
-    SpaceBetween = 0,
-    interval = 4000,
-    autoplay = false,
-    transitionSpeed = 600,
+    SpaceBetween = 0,    
     slidesPerView = 1,
-    loop = false,
-    responsive = {
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 },
-    },
+    // interval = 4000,
+    // autoplay = false,
+    // transitionSpeed = 600,
+
+    // loop = false,
+    // responsive = {
+    //   768: { slidesPerView: 2 },
+    //   1024: { slidesPerView: 3 },
+    // },
   }
 ) {
   let x = selector + " .slide";
@@ -31,14 +32,6 @@ function createSlider(
   slide.forEach((item, index) => {
     item.style.marginLeft = `${SpaceBetween}px`;
     item.style.width = `calc( (100% / ${slidesPerView}) - ${SpaceBetween}px)`;
-
-    // item.style.marginLeft = `${SpaceBetween}px`;
-    // item.style.width = `calc(${
-    //   (item.parentElement.parentElement.clientWidth /
-    //     slidesPerView /
-    //     item.parentElement.parentElement.clientWidth) *
-    //   100
-    // }%)`;
   });
 
   if (slide.length >= slidesPerView) {
@@ -49,18 +42,6 @@ function createSlider(
   }
 
   function counterSlider(counter) {
-    // slide.forEach((item, index) => {
-    //   item.style.transform = `translatex(calc(${(index - counter) * 100}% + ${
-    //     SpaceBetween * (index - counter)
-    //   }px))`;
-    // });
-
-    // slide.forEach((item, index) => {
-    //   item.style.transform = `translatex(calc(${(index - counter) * 100}% + ${
-    //     SpaceBetween * (index - counter)
-    //   }px))`;
-    // });
-
     slide[0].parentElement.style.transform = `translateX(calc(100% /
     ${slide.length} * ${counter})`;
 
@@ -146,7 +127,6 @@ let answer = document.querySelectorAll(".answer");
 
 accordion.forEach((item, index) => {
   item.addEventListener("click", () => {
-    // باز و بسته کردن محتوای کلیک شده
     if (answer[index].style.display === "block") {
       rotatePlus[index].style.transform = "rotate(45deg)";
       rotatePlus[index].style.transition = "transform 0.3s ease-out";
@@ -221,7 +201,7 @@ let bestof = async () => {
           `;
       document.querySelector(".bestof-detail").innerHTML = detail;
       if (selectedItem.Episodes) {
-        console.log(document.querySelector(".bestof-slides"));
+        
 
         document.querySelector(".bestof-slides").innerHTML =
           selectedItem.Episodes.map((itemEpisode) => {
@@ -284,7 +264,7 @@ let bestof = async () => {
       });
     };
 
-    // Render poster items
+    // poster items
     const renderBestOfItems = (type) => {
       if (type === "movie") {
         bestofItem = res.bestOf.bestOfMovie
@@ -309,7 +289,7 @@ let bestof = async () => {
       }
       document.querySelector(".bestof-items").innerHTML = bestofItem;
 
-      // Add click listeners to the newly rendered items
+      // Add click listeners
       const bestofItems = document.querySelectorAll(
         type === "movie" ? ".bestof-movie-click" : ".bestof-series-click"
       );
@@ -317,10 +297,10 @@ let bestof = async () => {
       updateDetailListeners(bestofItems, type);
     };
 
-    // Initial render for series
+    // series
     renderBestOfItems("series");
 
-    // Event listeners for buttons
+    // Event listeners button
     seriesButton.addEventListener("click", () => {
       renderBestOfItems("series");
       seriesButton.style.background = "rgba(255,255,255,.12)";
@@ -333,7 +313,7 @@ let bestof = async () => {
       movieButton.style.background = "rgba(255,255,255,.12)";
     });
   } catch (error) {
-    console.log("error:", error);
+    console.log(error);
   }
 };
 
@@ -372,7 +352,7 @@ let comment = async () => {
       DisableNavigation: true,
     });
   } catch (error) {
-    console.log("error1", error);
+    console.log(error);
   }
 };
 
@@ -419,7 +399,7 @@ let freeMovie = async () => {
       .querySelector(".free-movie-0")
       .insertAdjacentHTML("afterbegin", freeMovieItem0.join(""));
   } catch (error) {
-    console.log("error2", error);
+    console.log(error);
   }
 };
 
@@ -444,7 +424,7 @@ let hero = async () => {
       bgDiv0.style.backgroundImage = `url(${heroImg[heroImgIndex]})`;
     }, 5000);
   } catch (error) {
-    console.log("error3", error);
+    console.log(error);
   }
 };
 
@@ -454,7 +434,7 @@ let menu = async () => {
   let submenuItem = "";
   let arrowDown = "";
   try {
-    let data = await fetch("../../db.json");
+    let data = await fetch("./db.json");
     let res = await data.json();
 
     menuItem = res.menu.map((item) => {
@@ -491,24 +471,29 @@ let menu = async () => {
       .querySelector(".menu-items")
       .insertAdjacentHTML("afterbegin", menuItem.join(""));
 
-    // // اضافه کردن هاور
+    // hover
     // document.querySelector(".menu-hover").addEventListener("mouseenter", () => {
     //   button.style.color = "#f9ad03";
     // });
 
-    // // حذف هاور
     // document.querySelector(".menu-hover").addEventListener("mouseleave", () => {
     //   button.style.color = "#fff";
     // });
   } catch (error) {
-    console.log("error2", error);
+    console.log(error);
   }
 };
 
+
+menu();
+hero()
+bestof();
+freeMovie();
+comment()
 // min width 0
 createSlider(".slider-0", { Pagination: true, DisableNavigation: true });
-comment;
-hero;
-freeMovie();
-menu();
-bestof();
+
+
+
+
+
