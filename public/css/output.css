@@ -789,6 +789,14 @@ html,
   bottom: 0px;
 }
 
+.bottom-\[130px\] {
+  bottom: 130px;
+}
+
+.bottom-\[180px\] {
+  bottom: 180px;
+}
+
 .bottom-\[25px\] {
   bottom: 25px;
 }
@@ -841,6 +849,10 @@ html,
   top: 10px;
 }
 
+.top-\[32px\] {
+  top: 32px;
+}
+
 .top-\[38\%\] {
   top: 38%;
 }
@@ -855,26 +867,6 @@ html,
 
 .top-\[calc\(50\%-24px\)\] {
   top: calc(50% - 24px);
-}
-
-.bottom-\[0\] {
-  bottom: 0;
-}
-
-.bottom-\[130px\] {
-  bottom: 130px;
-}
-
-.top-\[\] {
-  top: ;
-}
-
-.top-\[32px\] {
-  top: 32px;
-}
-
-.bottom-\[180px\] {
-  bottom: 180px;
 }
 
 .z-\[10\] {
@@ -1504,14 +1496,6 @@ html,
   background-color: rgba(6,6,6,0.6);
 }
 
-.bg-\[\] {
-  background-color: ;
-}
-
-.bg-\[url\] {
-  background-color: url;
-}
-
 .bg-\[linear-gradient\(180deg\2c \#151515_4\%\2c rgba\(21\2c 21\2c 21\2c 0\)_45\%\)\] {
   background-image: linear-gradient(180deg,#151515 4%,rgba(21,21,21,0) 45%);
 }
@@ -1540,24 +1524,24 @@ html,
   background-image: radial-gradient(130% 44% at 41% 40%,rgba(0,0,0,0) 0,#151515 100%);
 }
 
-.bg-\[url\(\/public\/image\/bg-cinema\.webp\)\] {
-  background-image: url(/public/image/bg-cinema.webp);
-}
-
-.bg-\[url\(\/public\/image\/hero_img_1\.jpeg\)\] {
-  background-image: url(/public/image/hero_img_1.jpeg);
-}
-
-.bg-\[url\(\)\] {
-  background-image: url();
+.bg-\[url\(\'\.\/public\/image\/bg-cinema\.webp\'\)\] {
+  background-image: url('./public/image/bg-cinema.webp');
 }
 
 .bg-\[url\(\.\/public\/image\/bg_slide_0\.png\)\] {
   background-image: url(./public/image/bg_slide_0.png);
 }
 
-.bg-\[url\(\/public\/image\/bg_slide_0\.png\)\] {
-  background-image: url(/public/image/bg_slide_0.png);
+.bg-\[url\(\.\/public\/image\/hero_img_1\.jpeg\)\] {
+  background-image: url(./public/image/hero_img_1.jpeg);
+}
+
+.bg-\[url\(\'\.\.\/\/image\/bg-cinema\.webp\'\)\] {
+  background-image: url('..//image/bg-cinema.webp');
+}
+
+.bg-\[url\(\'\.\.\/image\/bg-cinema\.webp\'\)\] {
+  background-image: url('../image/bg-cinema.webp');
 }
 
 .bg-cover {
@@ -1781,10 +1765,6 @@ html,
 
 .pt-\[8px\] {
   padding-top: 8px;
-}
-
-.pt-\[\] {
-  padding-top: ;
 }
 
 .text-center {
@@ -2014,10 +1994,6 @@ html,
 
 .opacity-\[0\.65\] {
   opacity: 0.65;
-}
-
-.opacity-\[\] {
-  opacity: ;
 }
 
 .contrast-50 {
