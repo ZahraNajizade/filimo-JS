@@ -170,7 +170,7 @@ let bestof = async () => {
   let bestofGenre = "";
 
   try {
-    let data = await fetch('../../db.json');
+    let data = await fetch('./db.json');
     let res = await data.json();
 
     function updateDetail(items, element, type, index) {
@@ -341,7 +341,7 @@ let bestof = async () => {
 let comment = async () => {
   let commentItem = "";
   try {
-    let data = await fetch("../../db.json");
+    let data = await fetch("./db.json");
     let res = await data.json();
 
     commentItem = res.Comments.map((item) => {
@@ -381,7 +381,7 @@ let freeMovie = async () => {
   let freeMovieItem = "";
   let freeMovieItem0 = "";
   try {
-    let data = await fetch("../../db.json");
+    let data = await fetch("./db.json");
     let res = await data.json();
 
     freeMovieItem = res.freeMovie.map((item) => {
@@ -430,7 +430,7 @@ let hero = async () => {
 
   let heroImg = [];
   try {
-    let data = await fetch("../../db.json");
+    let data = await fetch("./db.json");
     let res = await data.json();
 
     heroImg = res.heroImage.map((item) => item.src);
@@ -506,9 +506,9 @@ let menu = async () => {
 };
 
 // min width 0
-// createSlider(".slider-0", { Pagination: true, DisableNavigation: true });
-// comment;
-// hero;
-// freeMovie();
+createSlider(".slider-0", { Pagination: true, DisableNavigation: true });
+comment;
+hero;
+freeMovie();
 menu();
-// bestof();
+bestof();

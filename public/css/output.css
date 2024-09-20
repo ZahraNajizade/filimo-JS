@@ -1544,6 +1544,18 @@ html,
   background-image: url('../image/bg-cinema.webp');
 }
 
+.bg-\[url\(\.\.\/image\/bg_slide_0\.png\)\] {
+  background-image: url(../image/bg_slide_0.png);
+}
+
+.bg-\[url\(\.\.\/image\/hero_img_1\.jpeg\)\] {
+  background-image: url(../image/hero_img_1.jpeg);
+}
+
+.bg-\[url\(\'\.\.\/bg-cinema\.webp\'\)\] {
+  background-image: url('../bg-cinema.webp');
+}
+
 .bg-cover {
   background-size: cover;
 }
