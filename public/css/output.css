@@ -641,8 +641,6 @@ html,
   background: -webkit-linear-gradient(245deg, #05c3ff 0, #151515 40%);
 }
 
-/* swiper */
-
 /* animation */
 
 .infinite-carousel {
@@ -712,6 +710,11 @@ html,
   display: flex;
   height: 100%;
   width: 100%;
+  cursor: default;
+}
+
+.slides img ,.slides span{
+  pointer-events: none;
 }
 
 .slide-0 {
@@ -1094,6 +1097,10 @@ html,
   width: 16px;
 }
 
+.w-\[22px\] {
+  width: 22px;
+}
+
 .w-\[24px\] {
   width: 24px;
 }
@@ -1212,6 +1219,10 @@ html,
   max-width: 220px;
 }
 
+.max-w-\[228px\] {
+  max-width: 228px;
+}
+
 .max-w-\[230px\] {
   max-width: 230px;
 }
@@ -1238,6 +1249,21 @@ html,
 
 .translate-y-\[-60px\] {
   --tw-translate-y: -60px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[\] {
+  --tw-translate-x: ;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[150px\] {
+  --tw-translate-x: 150px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[130px\] {
+  --tw-translate-x: 130px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1472,6 +1498,10 @@ html,
   background-color: rgba(0,0,0,0.8);
 }
 
+.bg-\[rgba\(255\2c 196\2c 60\2c 0\.12\)\] {
+  background-color: rgba(255,196,60,0.12);
+}
+
 .bg-\[rgba\(255\2c 255\2c 255\2c \.06\)\] {
   background-color: rgba(255,255,255,.06);
 }
@@ -1524,22 +1554,6 @@ html,
   background-image: radial-gradient(130% 44% at 41% 40%,rgba(0,0,0,0) 0,#151515 100%);
 }
 
-.bg-\[url\(\'\.\/public\/image\/bg-cinema\.webp\'\)\] {
-  background-image: url('./public/image/bg-cinema.webp');
-}
-
-.bg-\[url\(\.\/public\/image\/bg_slide_0\.png\)\] {
-  background-image: url(./public/image/bg_slide_0.png);
-}
-
-.bg-\[url\(\.\/public\/image\/hero_img_1\.jpeg\)\] {
-  background-image: url(./public/image/hero_img_1.jpeg);
-}
-
-.bg-\[url\(\'\.\.\/\/image\/bg-cinema\.webp\'\)\] {
-  background-image: url('..//image/bg-cinema.webp');
-}
-
 .bg-\[url\(\'\.\.\/image\/bg-cinema\.webp\'\)\] {
   background-image: url('../image/bg-cinema.webp');
 }
@@ -1550,10 +1564,6 @@ html,
 
 .bg-\[url\(\.\.\/image\/hero_img_1\.jpeg\)\] {
   background-image: url(../image/hero_img_1.jpeg);
-}
-
-.bg-\[url\(\'\.\.\/bg-cinema\.webp\'\)\] {
-  background-image: url('../bg-cinema.webp');
 }
 
 .bg-cover {
@@ -2163,6 +2173,11 @@ html,
 
   .t2\:max-w-\[400px\] {
     max-width: 400px;
+  }
+
+  .t2\:translate-x-0 {
+    --tw-translate-x: 0px;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
   .t2\:justify-normal {

@@ -6,15 +6,9 @@ function createSlider(
     DisableNavigation = false,
     SpaceBetween = 0,    
     slidesPerView = 1,
-    // interval = 4000,
-    // autoplay = false,
-    // transitionSpeed = 600,
-
-    // loop = false,
-    // responsive = {
-    //   768: { slidesPerView: 2 },
-    //   1024: { slidesPerView: 3 },
-    // },
+    interval = 2000,
+    autoplay = false,
+    loop = false,
   }
 ) {
   let x = selector + " .slide";
@@ -34,16 +28,30 @@ function createSlider(
     item.style.width = `calc( (100% / ${slidesPerView}) - ${SpaceBetween}px)`;
   });
 
-  if (slide.length >= slidesPerView) {
+  if (slide.length > slidesPerView) {
     slide[0].parentElement.style.width = `calc(100% /
     ${slidesPerView} * ${slide.length})`;
   } else {
-    slide[0].parentElement.style.width = `100%`;
+    slide[0].parentElement.style.width = "100%";
+    prev.style.opacity = 0.2;
+    next.style.opacity = 0.2;
+    autoplay = false;
+    Pagination = false;
+    prev.disabled = true;
+    next.disabled = true;
   }
 
   function counterSlider(counter) {
-    slide[0].parentElement.style.transform = `translateX(calc(100% /
+    // loop
+
+    if (loop) {
+      slide.forEach((item, index) => {
+        item.style.order = `${(index - counter + slide.length) % slide.length}`;
+      });
+    } else {
+      slide[0].parentElement.style.transform = `translateX(calc(100% /
     ${slide.length} * ${counter})`;
+    }
 
     // pagination
     if (Pagination) {
@@ -71,41 +79,151 @@ function createSlider(
     }
 
     // min width 0 (button)
-    if (counter == 1) {
-      removeButton2.classList.add("!block");
-      removeButton1.classList.add("hidden");
-    } else {
-      removeButton2.classList.remove("!block");
-    }
-    if (counter == 0 || counter == 2 || counter == 3 || counter == 4) {
-      removeButton1.classList.add("!block");
-    } else {
-      removeButton1.classList.remove("!block");
-    }
-    if (counter > 4) {
-      removeButton1.parentElement.classList.add("!max-h-[70px]");
-    } else {
-      removeButton1.parentElement.classList.remove("!max-h-[70px]");
+    if (!autoplay) {
+      if (counter == 1) {
+        removeButton2.classList.add("!block");
+        removeButton1.classList.add("hidden");
+      } else {
+        removeButton2.classList.remove("!block");
+      }
+      if (counter == 0 || counter == 2 || counter == 3 || counter == 4) {
+        removeButton1.classList.add("!block");
+      } else {
+        removeButton1.classList.remove("!block");
+      }
+      console.log(counter);
+
+      if (counter > 4) {
+        removeButton1.parentElement.classList.add("!max-h-[70px]");
+      } else {
+        removeButton1.parentElement.classList.remove("!max-h-[70px]");
+      }
     }
   }
 
-  // loop
+  // autoplay
+  if (autoplay) {
+    setInterval(() => {
+      loop = true;
+      counter = (counter + slide.length) % slide.length;
+      counter++;
+      counterSlider(counter);
+    }, interval);
+  }
 
   // navigation
   next.addEventListener("click", () => {
-    if (counter != slide.length - 1 - (slidesPerView - 1)) {
-      prev.style.opacity = 1;
+    if (loop || autoplay) {
+      counter = (counter + slide.length) % slide.length;
       counter++;
       counterSlider(counter);
+    } else {
+      if (counter != slide.length - 1 - (slidesPerView - 1)) {
+        prev.style.opacity = 1;
+        counter++;
+        counterSlider(counter);
+      }
     }
   });
   prev.addEventListener("click", () => {
-    if (counter != 0) {
-      next.style.opacity = 1;
+    if (loop || autoplay) {
       counter--;
+      counter = (counter + slide.length) % slide.length;
       counterSlider(counter);
+    } else {
+      if (counter != 0) {
+        next.style.opacity = 1;
+        counter--;
+        counterSlider(counter);
+      }
     }
   });
+
+  // mouse move
+  let startPos = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let isDragging = false;
+
+  slide[0].parentElement.addEventListener("mousedown", startDrag);
+  slide[0].parentElement.addEventListener("touchstart", startDrag);
+
+  // move
+  slide[0].parentElement.addEventListener("mousemove", drag);
+  slide[0].parentElement.addEventListener("touchmove", drag);
+
+  //  end
+  slide[0].parentElement.addEventListener("mouseup", endDrag);
+  slide[0].parentElement.addEventListener("mouseleave", endDrag);
+  slide[0].parentElement.addEventListener("touchend", endDrag);
+
+  function startDrag(event) {
+    if (counter > slide.length - slidesPerView || counter < 0) {
+      isDragging = false;
+    } else {
+      isDragging = true;
+      startPos = getPositionX(event);
+    }
+  }
+
+  function drag(event) {
+    if (!isDragging) return;
+    const currentPosition = getPositionX(event);
+
+    currentTranslate = prevTranslate + currentPosition - startPos;
+
+    if (counter == slide.length - slidesPerView && currentTranslate > 0) {
+      currentTranslate = 0;
+    } else if (counter == 0 && currentTranslate < 0) {
+      currentTranslate = 0;
+    } else {
+      slide[0].parentElement.style.transform = `translateX(calc(100% /
+    ${slide.length} * ${counter} + ${currentTranslate}px))`;
+    }
+  }
+
+  function endDrag() {
+    if (!isDragging) return;
+    isDragging = false;
+
+    if (counter < slide.length - slidesPerView && currentTranslate > 0) {
+      counter++;
+      slide[0].parentElement.style.transform = `translateX(calc(100% /
+    ${slide.length} * ${counter})`;
+    } else if (counter > 0 && currentTranslate < 0) {
+      counter--;
+      slide[0].parentElement.style.transform = `translateX(calc(100% /
+    ${slide.length} * ${counter})`;
+    }
+
+    // min width 0 (button)
+    if (!autoplay) {
+      if (counter == 1) {
+        removeButton2.classList.add("!block");
+        removeButton1.classList.add("hidden");
+      } else {
+        removeButton2.classList.remove("!block");
+      }
+      if (counter == 0 || counter == 2 || counter == 3 || counter == 4) {
+        removeButton1.classList.add("!block");
+      } else {
+        removeButton1.classList.remove("!block");
+      }
+      console.log(counter);
+
+      if (counter > 4) {
+        removeButton1.parentElement.classList.add("!max-h-[70px]");
+      } else {
+        removeButton1.parentElement.classList.remove("!max-h-[70px]");
+      }
+    }
+  }
+
+  function getPositionX(event) {
+    return event.type.includes("mouse")
+      ? event.pageX
+      : event.touches[0].clientX;
+  }
 
   // pagination
 
@@ -148,16 +266,30 @@ let bestof = async () => {
   let bestofItem = "";
   let detail = "";
   let bestofGenre = "";
+  let IMDB = ""
+  let selectedItem 
 
   try {
     let data = await fetch('./db.json');
     let res = await data.json();
 
     function updateDetail(items, element, type, index) {
-      let selectedItem =
-        type === "movie"
-          ? res.bestOf.bestOfMovie[index]
-          : res.bestOf.bestOfSeries[index];
+      
+
+          if (type === "movie"){
+           selectedItem= res.bestOf.bestOfMovie[index]
+            IMDB = `<div class="bg-[rgba(255,196,60,0.12)] py-[3px] px-[15px] rounded-[24px] min-w-[50px] flex items-center justify-center gap-[4px]">
+        <img src="./public/image/icon_imdb.png" alt="" class="w-[22px]">
+        <span class="text-[#fdc13c]">${selectedItem.IMDB}</span>
+      </div>`;
+            seriesButton.style.background = "transparent";
+            movieButton.style.background = "rgba(255,255,255,.12)";
+            document.querySelector(".container-slider").innerHTML =" "
+          } else{
+             selectedItem = res.bestOf.bestOfSeries[index];
+            seriesButton.style.background = "rgba(255,255,255,.12)";
+            movieButton.style.background = "transparent";
+          }
 
       element.style.opacity = "1";
       element.style.transform = "scale(1.1)";
@@ -184,7 +316,59 @@ let bestof = async () => {
         })
         .join("");
 
-      detail = `
+        if (type === "movie"){
+          detail = `
+              <div class="flex flex-col ml-[10px]">
+                <a href="#" class="mb-[12px] text-[16px] font-[700] leading-[32px]">${selectedItem.title}</a>
+                <div class="mb-[24px]"></div>
+                <div class="mb-[24px] text-[#a1a1a1] font-[100] leading-[12px]">کارگردان: ${selectedItem.director}</div>
+                <div class="gap-[8px] flex items-center mb-[24px]">
+                  ${IMDB}
+                  ${bestofGenre}
+                </div>
+                <div class="mb-[24px] text-[12px] leading-[26px] max-w-[708px] whitespace-nowrap overflow-hidden text-ellipsis">${selectedItem.description}</div>
+                 <a href="#"
+              class="ml-[12px] py-[10px] px-[16px] bg-[#1cb561] w-full max-w-[228px] justify-center flex items-center gap-[4px] rounded-[4px] mb-[24px]">
+              <div>
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                  data-gtm-vis-has-fired2323515_2471="1" width="18" height="18">
+                  <defs>
+                    <g id="ui-icon-subscription" viewBox="0 0 24 24">
+                      <path
+                        d="M19 4H5A3 3 0 0 0 2 7V17a3 3 0 0 0 3 3H19a3 3 0 0 0 3-3V7A3 3 0 0 0 19 4Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7A1 1 0 0 1 5 6H19a1 1 0 0 1 1 1Z">
+                      </path>
+                      <path
+                        d="M12.4 11 9 8.74A1.25 1.25 0 0 0 7 9.79v4.42A1.26 1.26 0 0 0 9 15.27l3.44-2.21A1.26 1.26 0 0 0 12.4 11Z">
+                      </path>
+                      <circle cx="16" cy="9" r="1"></circle>
+                      <circle cx="16" cy="15" r="1"></circle>
+                      <circle cx="16" cy="12" r="1"></circle>
+                    </g>
+                  </defs>
+                  <g fill="#FFFFFF">
+                    <path
+                      d="M19 4H5A3 3 0 0 0 2 7V17a3 3 0 0 0 3 3H19a3 3 0 0 0 3-3V7A3 3 0 0 0 19 4Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7A1 1 0 0 1 5 6H19a1 1 0 0 1 1 1Z">
+                    </path>
+                    <path
+                      d="M12.4 11 9 8.74A1.25 1.25 0 0 0 7 9.79v4.42A1.26 1.26 0 0 0 9 15.27l3.44-2.21A1.26 1.26 0 0 0 12.4 11Z">
+                    </path>
+                    <circle cx="16" cy="9" r="1"></circle>
+                    <circle cx="16" cy="15" r="1"></circle>
+                    <circle cx="16" cy="12" r="1"></circle>
+                  </g>
+                </svg>
+              </div>
+              <span class="text-[1.1rem] font-[600]">
+                خرید اشتراک و تماشا</span>
+            </a><div class="mb-[24px] font-[400] leading-[12px]">کارگردان: ${selectedItem.moreData}</div>
+              </div>
+              <div class="absolute left-[140px] top-0">
+                <img src="${selectedItem.logo}" alt="" class="block max-h-[190px] w-full max-w-[220px] ">
+              </div>
+            
+          `;
+        }else{
+          detail = `
               <div class="flex flex-col ml-[10px]">
                 <a href="#" class="mb-[12px] text-[16px] font-[700] leading-[32px]">${selectedItem.title}</a>
                 <div class="mb-[24px]"></div>
@@ -199,15 +383,60 @@ let bestof = async () => {
               </div>
             
           `;
+        }
+          
       document.querySelector(".bestof-detail").innerHTML = detail;
       if (selectedItem.Episodes) {
-        
 
-        document.querySelector(".bestof-slides").innerHTML =
-          selectedItem.Episodes.map((itemEpisode) => {
-            console.log(itemEpisode.image);
-            if (!itemEpisode.free) {
-              return `<div class="slide">
+        document.querySelector(".container-slider").innerHTML = `
+        <div class="slider bestof-slider${index} relative">
+        <div class="slides bestof-slides"></div>
+        <div class="w-full">
+          <button class="prev rotate-180 opacity-[0.2] w-[40px] h-[40px] bg-[rgba(6,6,6,0.6)] rounded-[50%] flex justify-center items-center absolute right-0 backdrop-blur-[30px] top-[38%]">
+            <svg
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              class="mr-[2px]"
+            >
+              <defs>
+                <g id="ui-icon-arrow_back_ios" viewBox="0 0 24 24">
+                  <path d="M16 20.5a1 1 0 0 1-.68-.27l-8-7.5a1 1 0 0 1 0-1.46l8-7.5a1 1 0 1 1 1.36 1.46L9.46 12l7.22 6.77a1 1 0 0 1 .05 1.41A1 1 0 0 1 16 20.5Z"></path>
+                </g>
+              </defs>
+              <g fill="#FFFFFF">
+                <path d="M16 20.5a1 1 0 0 1-.68-.27l-8-7.5a1 1 0 0 1 0-1.46l8-7.5a1 1 0 1 1 1.36 1.46L9.46 12l7.22 6.77a1 1 0 0 1 .05 1.41A1 1 0 0 1 16 20.5Z"></path>
+              </g>
+            </svg>
+          </button>
+          <button class="next w-[40px] h-[40px] bg-[rgba(6,6,6,0.6)] rounded-[50%] flex justify-center items-center absolute left-0 backdrop-blur-[30px] top-[38%]">
+            <svg
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              class="mr-[2px]"
+            >
+              <defs>
+                <g id="ui-icon-arrow_back_ios" viewBox="0 0 24 24">
+                  <path d="M16 20.5a1 1 0 0 1-.68-.27l-8-7.5a1 1 0 0 1 0-1.46l8-7.5a1 1 0 1 1 1.36 1.46L9.46 12l7.22 6.77a1 1 0 0 1 .05 1.41A1 1 0 0 1 16 20.5Z"></path>
+                </g>
+              </defs>
+              <g fill="#FFFFFF">
+                <path d="M16 20.5a1 1 0 0 1-.68-.27l-8-7.5a1 1 0 0 1 0-1.46l8-7.5a1 1 0 1 1 1.36 1.46L9.46 12l7.22 6.77a1 1 0 0 1 .05 1.41A1 1 0 0 1 16 20.5Z"></path>
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>;
+        `;
+          document.querySelector(".bestof-slides").innerHTML =
+            selectedItem.Episodes.map((itemEpisode) => {
+              if (!itemEpisode.free) {
+                return `<div class="slide">
         <div class=" relative mb-[8px] rounded-[10px] overflow-hidden h-[180px]">
         <div class="pt-[57.6%]"></div>
           <img src="${itemEpisode.image}" alt="" class="h-full w-full absolute inset-0" />
@@ -219,8 +448,8 @@ let bestof = async () => {
         </div>
         <div class="text-[11px] text-[#f6f6f6] leading-[15px] font-[700]">${itemEpisode.title}</div>
       </div>`;
-            } else {
-              return `<div class="slide">
+              } else {
+                return `<div class="slide">
         <div class=" relative mb-[8px] rounded-[10px] overflow-hidden h-[180px]">
           <div class="pt-[57.6%]"></div>
           <img src="${itemEpisode.image}" alt="" class="h-full w-full absolute inset-0" />
@@ -244,15 +473,19 @@ let bestof = async () => {
         </div>
         <div class="text-[11px] text-[#f6f6f6] leading-[15px] font-[700]">${itemEpisode.title}</div>
       </div>`;
-            }
-          }).join("");
-      }
+              }
+            }).join("");
 
-      createSlider(".bestof-slider", {
+             createSlider(`.bestof-slider${index}`, {
         SpaceBetween: 20,
         DisableNavigation: true,
         slidesPerView: 4,
       });
+      }
+
+      
+      
+     
     }
 
     // detail
@@ -303,14 +536,12 @@ let bestof = async () => {
     // Event listeners button
     seriesButton.addEventListener("click", () => {
       renderBestOfItems("series");
-      seriesButton.style.background = "rgba(255,255,255,.12)";
-      movieButton.style.background = "transparent";
+
     });
 
     movieButton.addEventListener("click", () => {
       renderBestOfItems("movie");
-      seriesButton.style.background = "transparent";
-      movieButton.style.background = "rgba(255,255,255,.12)";
+      
     });
   } catch (error) {
     console.log(error);
@@ -328,13 +559,13 @@ let comment = async () => {
       return `<div class="p-[24px] slide comment-slide border-[#33353d] border-solid border-[1px] rounded-[12px] bg-[#ffffff05]">
                       <div class="flex justify-between items-center mb-[16px]">
                         <div class="flex items-center gap-[8px]">
-                          <img src="../image/person.png" alt="person" />
+                          <img src="./public/image/person.png" alt="person" />
                           <span class="text-[#959ba2] font-[400] text-[14px]">
                             ${item.name}
                           </span>
                         </div>
                         <div class="">
-                          <img src="../image/virgol.png" alt="virgol" />
+                          <img src="./public/image/virgol.png" alt="virgol" />
                         </div>
                       </div>
                       <div class="mb-[16px] overflow-hidden overflow-y-auto h-[75px] text-[#f9f9f9] leading-[18px] font-[400] text-[11px]">
@@ -349,7 +580,8 @@ let comment = async () => {
     createSlider(".comment-slider", {
       SpaceBetween: 10,
       slidesPerView: 3,
-      DisableNavigation: true,
+      autoplay:true,
+    loop:true
     });
   } catch (error) {
     console.log(error);
@@ -491,7 +723,7 @@ bestof();
 freeMovie();
 comment()
 // min width 0
-createSlider(".slider-0", { Pagination: true, DisableNavigation: true });
+createSlider(".slider-0", { Pagination: true, DisableNavigation: true,loop:false,autoplay:false });
 
 
 
